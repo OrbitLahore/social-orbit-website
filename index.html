@@ -15,58 +15,138 @@
     .hero-section {
       background: var(--cream);
       border-bottom: var(--border);
-      min-height: 100svh;
+      min-height: max(100svh - 60px, 650px);
       display: flex; align-items: center;
-      padding: 80px 24px 60px;
+      padding: 48px 20px 64px;
       position: relative; overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .hero-section { min-height: 100svh; padding: 80px 24px 60px; }
     }
     .hero-inner {
       max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+      display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
     }
     @media (min-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
     }
-    .hero-deco-tl { position: absolute; top: 24px; left: 24px; font-size: 32px; color: var(--orbit-purple); user-select:none; }
-    .hero-deco-br { position: absolute; bottom: 40px; right: 24px; font-size: 32px; color: var(--hot-pink); user-select:none; }
+    .hero-deco-tl { position: absolute; top: 20px; left: 20px; font-size: 24px; color: var(--orbit-purple); user-select:none; }
+    .hero-deco-br { position: absolute; bottom: 24px; right: 20px; font-size: 24px; color: var(--hot-pink); user-select:none; }
+    @media (min-width: 768px) {
+      .hero-deco-tl { top: 32px; left: 32px; font-size: 32px; }
+      .hero-deco-br { bottom: 40px; right: 32px; font-size: 32px; }
+    }
+    .hero-content { display: flex; flex-direction: column; position: relative; z-index: 2; }
+    .hero-title { font-size: clamp(38px, 11vw, 64px); line-height: 1.02; margin-bottom: 20px; letter-spacing: -1.5px; }
+    @media (min-width: 768px) { .hero-title { margin-bottom: 24px; letter-spacing: -2px; } }
+    
     .hero-note {
-      border: var(--border); background: var(--white); padding: 16px 20px;
-      transform: rotate(1deg); display: inline-block;
-      font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.5;
-      max-width: 360px;
+      border: 2px solid var(--ink); background: var(--white); padding: 12px 16px;
+      transform: rotate(-1.5deg); display: inline-block;
+      font-family: var(--font-body); font-size: 14px; font-weight: 500; line-height: 1.4;
+      width: fit-content; max-width: 100%;
+      box-shadow: 4px 4px 0px rgba(26,26,26,1);
+      margin-bottom: 32px;
     }
+    @media (min-width: 768px) {
+      .hero-note { padding: 16px 20px; font-size: 15px; font-weight: 400; max-width: 360px; box-shadow: 6px 6px 0px rgba(26,26,26,1); margin-bottom: 40px; transform: rotate(-2deg); }
+    }
+    
+    .hero-buttons { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; width: 100%; }
+    .hero-buttons a { width: 100%; text-align: center; justify-content: center; }
+    @media (min-width: 480px) {
+      .hero-buttons { flex-direction: row; flex-wrap: wrap; align-items: center; }
+      .hero-buttons a { width: auto; }
+    }
+    
+    .hero-btn-main { font-size: 15px !important; padding: 16px 28px !important; }
+    .hero-btn-sub { font-size: 13px !important; padding: 14px 20px !important; }
+    @media (min-width: 768px) {
+      .hero-btn-main { font-size: 15px !important; padding: 16px 36px !important; }
+      .hero-btn-sub { font-size: 13px !important; padding: 14px 24px !important; }
+    }
+
+    .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .hero-tags span {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+      text-transform: uppercase; border: 1.5px solid var(--ink); padding: 6px 12px;
+      background: var(--white); font-weight: 700;
+      box-shadow: 2px 2px 0px rgba(26,26,26,1);
+    }
+    @media (min-width: 768px) {
+      .hero-tags { gap: 12px; margin-top: 0; }
+      .hero-tags span { font-size: 11px; letter-spacing: 1.5px; padding: 6px 14px; box-shadow: 3px 3px 0px rgba(26,26,26,1); }
+    }
+
+    .hero-image-wrapper {
+      position: relative; padding: 8px; z-index: 1;
+    }
+    
     .hero-image-box {
-      border: 2px dashed rgba(26,26,26,.3); background: var(--white);
-      min-height: 420px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 20px;
-      padding: 56px 40px; transform: rotate(-4deg);
-      box-shadow: 8px 10px 0px rgba(26,26,26,.12);
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-      color: rgba(26,26,26,.4); text-align: center; position: relative;
+      border: 2px dashed rgba(26,26,26,.4); background: var(--white);
+      min-height: 220px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      padding: 32px 20px; transform: rotate(1.5deg);
+      box-shadow: 6px 6px 0px rgba(26,26,26,1);
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(26,26,26,.6); text-align: center; position: relative;
       transition: transform .3s ease, box-shadow .3s ease;
+      margin: 0;
+      background-image: radial-gradient(rgba(26,26,26,0.05) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    @media (min-width: 768px) {
+      .hero-image-box {
+        min-height: 460px; gap: 24px;
+        padding: 56px 40px; transform: rotate(-2deg);
+        box-shadow: 12px 12px 0px rgba(26,26,26,1);
+        font-size: 11px; letter-spacing: 2px;
+        background-size: 20px 20px;
+      }
     }
     .hero-image-box:hover {
-      transform: rotate(-2deg) scale(1.02);
-      box-shadow: 12px 16px 0px rgba(26,26,26,.15);
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 8px 8px 0px rgba(26,26,26,1);
+    }
+    @media (min-width: 768px) {
+      .hero-image-box:hover {
+        transform: rotate(-1deg) scale(1.02);
+        box-shadow: 16px 16px 0px rgba(26,26,26,1);
+      }
     }
     .redacted-icon {
-      width: 72px; height: 72px; opacity: .25;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='1.2'%3E%3Crect x='3' y='3' width='18' height='18' rx='1'/%3E%3Cline x1='3' y1='3' x2='21' y2='21'/%3E%3C/svg%3E");
+      width: 48px; height: 48px; opacity: .4;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='1.5'%3E%3Crect x='3' y='3' width='18' height='18' rx='1'/%3E%3Cline x1='3' y1='3' x2='21' y2='21'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-size: contain;
     }
+    @media (min-width: 768px) {
+      .redacted-icon { width: 72px; height: 72px; opacity: .25; }
+    }
     .redacted-label {
-      font-family: var(--font-mono); font-size: 14px; letter-spacing: 4px;
-      color: rgba(26,26,26,.55); text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 3px;
+      color: rgba(26,26,26,.6); text-transform: uppercase; font-weight: 700;
+      background: var(--white); padding: 4px 8px;
     }
+    @media (min-width: 768px) { .redacted-label { font-size: 14px; letter-spacing: 4px; } }
+    
     .redacted-sub {
-      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      font-family: var(--font-body); font-size: 14px; font-weight: 500;
       font-style: italic; color: var(--hot-pink); letter-spacing: 0;
-      text-transform: none; line-height: 1.6; max-width: 260px;
+      text-transform: none; line-height: 1.5; max-width: 240px;
+      background: var(--white); padding: 4px 8px;
     }
+    @media (min-width: 768px) {
+      .redacted-sub { font-size: 16px; max-width: 280px; font-weight: 400; line-height: 1.6; }
+    }
+    
     .redacted-badge {
-      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2.5px;
-      text-transform: uppercase; border: 1px solid rgba(26,26,26,.35);
-      padding: 7px 18px; color: rgba(26,26,26,.55); margin-top: 6px;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; border: 1.5px solid rgba(26,26,26,.35);
+      padding: 6px 14px; color: rgba(26,26,26,.7); margin-top: 8px;
+      background: var(--white); font-weight: 700;
+    }
+    @media (min-width: 768px) {
+      .redacted-badge { font-size: 11px; letter-spacing: 2.5px; padding: 8px 18px; margin-top: 12px; }
     }
 
     /* Marquee ticker */
@@ -158,9 +238,9 @@
   <span class="hero-deco-tl">✦</span>
   <span class="hero-deco-br">✦</span>
   <div class="hero-inner">
-    <div style="display:flex;flex-direction:column;gap:24px;">
-      <div class="section-label reveal">// Social Orbit · Lahore</div>
-      <h1 class="zine-h1 reveal" style="--d:.05s; font-size:clamp(24px,5.5vw,52px);">
+    <div class="hero-content">
+      <div class="section-label reveal" style="margin-bottom:12px;">// Social Orbit · Lahore</div>
+      <h1 class="zine-h1 hero-title reveal" style="--d:.05s;">
         Scrolled for hours.<br>
         <span style="color:var(--hot-pink)">still bored?</span><br>
         there’s a fix.
@@ -168,18 +248,18 @@
       <div class="hero-note reveal" style="--d:.1s">
         400 followers. nobody to call.
       </div>
-      <div class="flex-row reveal" style="--d:.15s">
-        <a href="join.html" class="btn-primary" style="font-size:15px;padding:16px 36px;">Enter Orbit →</a>
-        <a href="narrative.html" class="btn-secondary" style="font-size:13px;padding:14px 24px;">what is this?</a>
+      <div class="hero-buttons reveal" style="--d:.15s">
+        <a href="join.html" class="btn-primary hero-btn-main">Enter Orbit →</a>
+        <a href="narrative.html" class="btn-secondary hero-btn-sub">what is this?</a>
       </div>
-      <div class="reveal" style="--d:.2s;display:flex;gap:12px;flex-wrap:wrap;">
-        <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:var(--border);padding:6px 14px;">🎫 Rs. 1500</span>
-        <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:var(--border);padding:6px 14px;">🔒 small room</span>
-        <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:var(--border);padding:6px 14px;">📍 Lahore</span>
+      <div class="hero-tags reveal" style="--d:.2s;">
+        <span>🎫 Rs. 1500</span>
+        <span>🔒 small room</span>
+        <span>📍 Lahore</span>
       </div>
     </div>
-    <div>
-      <div class="hero-image-box reveal" style="--d:.1s">
+    <div class="hero-image-wrapper reveal" style="--d:.1s">
+      <div class="hero-image-box">
         <div class="redacted-icon"></div>
         <span class="redacted-label">[ &nbsp;Image Redacted&nbsp; ]</span>
         <p class="redacted-sub">Too much screen time. Go outside and see it for yourself.</p>
