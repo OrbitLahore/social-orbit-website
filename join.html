@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Join | Social Orbit Lahore</title>
+  <meta name="description" content="Join Social Orbit. Form is short. One question. That's it. Lahore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--cream); }
+    .join-hero {
+      background: var(--cream); border-bottom: var(--border);
+      padding: 100px 24px 64px; position: relative; overflow: hidden;
+    }
+    .join-hero-inner { max-width: 760px; margin: 0 auto; }
+
+    .form-section { max-width: 600px; margin: 0 auto; }
+    .form-submit {
+      width: 100%; padding: 16px; font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase;
+      background: var(--orbit-purple); color: var(--white); border: var(--border);
+      border-color: var(--orbit-purple); cursor: pointer;
+      transition: background .2s, transform .2s var(--ease);
+      min-height: 52px; display: flex; align-items: center; justify-content: center;
+    }
+    .form-submit:hover { background: var(--hot-pink); border-color: var(--hot-pink); transform: translateY(-2px); }
+    .form-submit:disabled { background: var(--hot-pink); cursor: default; transform: none; }
+
+    .next-steps { display: flex; flex-direction: column; gap: 0; }
+    .next-step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px 0; border-bottom: var(--border);
+    }
+    .next-step:last-child { border-bottom: none; }
+    .step-n {
+      font-family: var(--font-mono); font-weight: 700; font-size: 24px;
+      color: var(--orbit-purple); flex-shrink: 0; width: 40px; line-height: 1;
+    }
+    .rules-list { display: flex; flex-direction: column; gap: 10px; }
+    .rule-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-family: var(--font-body); font-size: 14px; font-weight: 300; line-height: 1.6;
+      color: rgba(26,26,26,.7);
+    }
+    .rule-item::before { content: '→'; color: var(--orbit-purple); flex-shrink: 0; }
+
+    select.form-input {
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%231A1A1A'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+      padding-right: 40px; cursor: pointer;
+    }
+    .field-note {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+      color: rgba(26,26,26,.4); margin-top: 4px;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Social Orbit" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html" class="active">Join</a>
+    </div>
+    <a href="join.html" class="nav-cta" style="background:var(--hot-pink);border-color:var(--hot-pink)">Enter Orbit →</a>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="narrative.html">Narrative</a>
+  <a href="events.html">Events</a>
+  <a href="join.html" class="cta">Join →</a>
+  <div class="mobile-foot">Lahore</div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="join-hero">
+  <div style="position:absolute;top:24px;right:24px;font-size:28px;color:var(--hot-pink);user-select:none">✦</div>
+  <div style="position:absolute;bottom:24px;left:24px;font-size:20px;color:var(--orbit-purple);user-select:none">→</div>
+  <div class="join-hero-inner">
+    <p class="section-label reveal">// enter orbit</p>
+    <h1 class="zine-h1 reveal" style="--d:.05s;margin-bottom:20px">
+      form is short.<br>
+      one weird question.<br>
+      <span style="color:var(--hot-pink)">that's it.</span>
+    </h1>
+
+  </div>
+</section>
+
+<!-- ══ FORM ═══════════════════════════════════════════════ -->
+<section class="mode1" style="border-bottom:var(--border)">
+  <div class="mode1-section">
+    <div class="grid-2" style="gap:64px;align-items:start">
+
+      <!-- FORM -->
+      <div>
+        <p class="section-label reveal">// the form</p>
+        <div class="zine-card reveal" style="--d:.05s;padding:32px">
+          <form id="join-form" action="mailto:hello@thesocialorbit.com" method="POST" enctype="text/plain">
+
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="first name is fine" required autocomplete="given-name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="age">Age</label>
+              <input class="form-input" type="number" id="age" name="age" placeholder="your age" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+              <p class="field-note">confirmation goes here. no newsletter unless you want one.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="whatsapp">WhatsApp (Optional)</label>
+              <input class="form-input" type="tel" id="whatsapp" name="whatsapp" placeholder="03XX XXXXXXX">
+              <p class="field-note">for faster updates if you get in.</p>
+            </div>
+
+            <div class="form-group" style="margin-bottom:32px">
+              <label class="form-label" for="weird">The Icebreaker Question</label>
+              <textarea class="form-textarea" id="weird" name="weird" placeholder="what's a random topic you can talk about for 30 minutes straight?" required maxlength="300"></textarea>
+              <p class="field-note">no right answer. we read all of these. seriously.</p>
+            </div>
+
+            <button type="submit" class="form-submit" id="submit-btn">
+              submit request →
+            </button>
+
+            <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:.5px;color:rgba(26,26,26,.35);margin-top:16px;text-align:center">
+              confidence, not desperation. if this sounds like you, you know what to do.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIDEBAR INFO -->
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p class="section-label reveal">// what happens next</p>
+        <div class="next-steps reveal" style="--d:.05s">
+          <div class="next-step">
+            <span class="step-n">01</span>
+            <div>
+              <h4 class="zine-h3" style="margin-bottom:8px">we read it</h4>
+              <p class="zine-body">every form response is read by a human. we're looking for people who get it — not credentials.</p>
+            </div>
+          </div>
+          <div class="next-step">
+            <span class="step-n">02</span>
+            <div>
+              <h4 class="zine-h3" style="margin-bottom:8px">you get confirmed</h4>
+              <p class="zine-body">if there's a spot, you get an email with venue, time, and anything you need to know. no spam after.</p>
+            </div>
+          </div>
+          <div class="next-step">
+            <span class="step-n">03</span>
+            <div>
+              <h4 class="zine-h3" style="margin-bottom:8px">show up</h4>
+              <p class="zine-body">you don't need to bring anyone. you don't need to prepare talking points. just show up. that's the whole move.</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOTTOM CTA ═════════════════════════════════════════ -->
+<div class="cta-banner" style="background:var(--hot-pink)">
+  <h2>spots go fast.<br>the form doesn't.</h2>
+  <p>takes 2 minutes. one question. no pitch needed.</p>
+  <a href="#join-form" class="btn-white" onclick="document.getElementById('name').focus()">fill the form →</a>
+</div>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="logo.png" alt="Social Orbit" class="footer-logo-img"></div>
+    <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(26,26,26,.5);">Lahore · Touch Grass Together</p>
+    <div class="footer-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <p class="footer-copy">© 2026 Social Orbit · form is short. orbits are rare.</p>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

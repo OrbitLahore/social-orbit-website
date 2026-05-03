@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Events | Social Orbit Lahore</title>
+  <meta name="description" content="Upcoming Social Orbit events in Lahore. Arcade Night, Rooftop Chai, Zine Workshop. 25 people max. Rs 1500.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--pixel-night); }
+    .cursor { display: inline-block; animation: blink 1s step-end infinite; }
+
+    /* How it works steps */
+    .steps-grid { display: flex; flex-direction: column; gap: 0; }
+    .step-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 28px 0; border-bottom: 1px solid rgba(123,47,255,.2);
+    }
+    .step-item:last-child { border-bottom: none; }
+    .step-num {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px;
+      color: var(--pixel-violet); text-transform: uppercase; flex-shrink: 0;
+      width: 64px; padding-top: 3px;
+    }
+    .step-content h4 {
+      font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+      color: var(--white); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .step-content p { font-family: var(--font-mono); font-size: 12px; color: rgba(200,184,255,.6); line-height: 1.6; }
+
+    /* past orbits */
+    .past-card {
+      border: 2px solid rgba(123,47,255,.25); padding: 24px;
+      background: rgba(255,255,255,.02); position: relative;
+      opacity: .55;
+    }
+    .past-card::after { content: 'COMPLETED'; position: absolute; top: 16px; right: 16px;
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
+      color: var(--hot-pink); border: 1px solid var(--hot-pink); padding: 2px 8px;
+    }
+
+    .events-hero {
+      background: var(--pixel-night); border-bottom: 2px solid var(--pixel-violet);
+      padding: 100px 24px 72px; position: relative; overflow: hidden;
+    }
+    .events-hero-inner { max-width: 1200px; margin: 0 auto; }
+    .scanline {
+      position: absolute; inset: 0; pointer-events: none; opacity: .03;
+      background: repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 4px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV (dark mode) -->
+<nav class="site-nav dark" id="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Social Orbit" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <a href="join.html" class="nav-cta">Enter Orbit →</a>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu dark" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="narrative.html">Narrative</a>
+  <a href="events.html" class="active">Events</a>
+  <a href="join.html" class="cta">Join →</a>
+  <div class="mobile-foot">Lahore · 21 only</div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="events-hero">
+  <div class="scanline"></div>
+  <div class="events-hero-inner">
+    <p class="reveal" style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,184,255,.4);margin-bottom:16px;">&gt; loading social_orbit_v2026<span class="cursor">_</span></p>
+    <h1 class="pixel-h1 reveal" style="--d:.05s;margin-bottom:20px;font-size:clamp(24px,6vw,52px);">
+      &gt; Next Side_Quest:<br>Social_Orbit
+    </h1>
+    <p class="pixel-body reveal" style="--d:.1s;max-width:480px;">
+      one room. zero networking pressure. pick your level.
+    </p>
+  </div>
+</section>
+
+<!-- ══ UPCOMING EVENTS ════════════════════════════════════ -->
+<section class="mode2">
+  <div class="mode2-section">
+    <p class="reveal" style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,184,255,.4);margin-bottom:32px;">&gt; upcoming_orbits [ 3 found ]</p>
+    <div class="grid-3">
+
+      <!-- Card 1 -->
+      <div class="pixel-card reveal" style="--d:.0s">
+        <div class="pixel-corner-tr"></div><div class="pixel-corner-bl"></div>
+        <div style="border-bottom:2px solid var(--pixel-violet);padding-bottom:12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);letter-spacing:1px">LVL_01</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist)">HP: Full</span>
+        </div>
+        <h3 class="pixel-h2" style="margin-bottom:12px;font-size:clamp(16px,3vw,20px);">Arcade Night</h3>
+        <p class="pixel-body" style="margin-bottom:20px;min-height:72px;font-size:12px;">Button mashing, neon lights, and zero networking pressure. High scores only. no business cards allowed.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--hot-pink);margin-bottom:20px;display:flex;flex-direction:column;gap:6px">
+          <span>&gt; Date: Oct 15, 2026</span>
+          <span>&gt; Time: 7:00 PM</span>
+          <span>&gt; Loc: TBA · Central Lahore</span>
+          <span>&gt; Cost: Rs 1500</span>
+        </div>
+        <div class="hp-bar" style="margin-bottom:16px">♥♥♥</div>
+        <a href="join.html?event=arcade" class="pixel-btn" style="width:100%;justify-content:center;text-align:center;display:block">Join_Queue →</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="pixel-card reveal" style="--d:.1s">
+        <div class="pixel-corner-tr"></div><div class="pixel-corner-bl"></div>
+        <div style="border-bottom:2px solid var(--pixel-violet);padding-bottom:12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);letter-spacing:1px">LVL_02</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--hot-pink)">HP: Mid</span>
+        </div>
+        <h3 class="pixel-h2" style="margin-bottom:12px;font-size:clamp(16px,3vw,20px);">Rooftop Chai</h3>
+        <p class="pixel-body" style="margin-bottom:20px;min-height:72px;font-size:12px;">Lowkey conversations under the smoggy Lahore skyline. Blankets provided. good people guaranteed.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--hot-pink);margin-bottom:20px;display:flex;flex-direction:column;gap:6px">
+          <span>&gt; Date: Oct 22, 2026</span>
+          <span>&gt; Time: 6:30 PM</span>
+          <span>&gt; Loc: Model Town</span>
+          <span>&gt; Cost: Rs 1500</span>
+        </div>
+        <div class="hp-bar" style="margin-bottom:16px">♥♥<span style="opacity:.3">_</span></div>
+        <a href="join.html?event=rooftop" class="pixel-btn" style="width:100%;justify-content:center;text-align:center;display:block">Join_Queue →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="pixel-card reveal" style="--d:.2s">
+        <div class="pixel-corner-tr"></div><div class="pixel-corner-bl"></div>
+        <div style="border-bottom:2px solid var(--pixel-violet);padding-bottom:12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);letter-spacing:1px">LVL_03</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--hot-pink)">HP: Low</span>
+        </div>
+        <h3 class="pixel-h2" style="margin-bottom:12px;font-size:clamp(16px,3vw,20px);">Zine Workshop</h3>
+        <p class="pixel-body" style="margin-bottom:20px;min-height:72px;font-size:12px;">Cut, paste, complain. Making physical media about digital fatigue. Scissors provided. attitude expected.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--hot-pink);margin-bottom:20px;display:flex;flex-direction:column;gap:6px">
+          <span>&gt; Date: Nov 05, 2026</span>
+          <span>&gt; Time: 5:00 PM</span>
+          <span>&gt; Loc: Gulberg</span>
+          <span>&gt; Cost: Rs 1500</span>
+        </div>
+        <div class="hp-bar" style="margin-bottom:16px">♥<span style="opacity:.3">__</span></div>
+        <a href="join.html?event=zine" class="pixel-btn" style="width:100%;justify-content:center;text-align:center;display:block">Join_Queue →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ═══════════════════════════════════════ -->
+<section class="mode2" style="border-top:2px solid rgba(123,47,255,.3)">
+  <div class="mode2-section">
+    <p class="reveal" style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,184,255,.4);margin-bottom:32px;">&gt; system_guide [ how_it_works ]</p>
+    <h2 class="pixel-h1 reveal" style="--d:.05s;margin-bottom:40px;font-size:clamp(18px,4vw,32px)">&gt; How_It_Works</h2>
+    <div class="steps-grid">
+      <div class="step-item reveal">
+        <span class="step-num">STEP_01</span>
+        <div class="step-content">
+          <h4>submit the form</h4>
+          <p>one page. name, age, one weird question. that's it. we read every response.</p>
+        </div>
+      </div>
+      <div class="step-item reveal" style="--d:.05s">
+        <span class="step-num">STEP_02</span>
+        <div class="step-content">
+          <h4>get confirmed</h4>
+          <p>if you're in, you get a confirmation with the venue and time. no hype, just info.</p>
+        </div>
+      </div>
+      <div class="step-item reveal" style="--d:.1s">
+        <span class="step-num">STEP_03</span>
+        <div class="step-content">
+          <h4>show up. alone if you want.</h4>
+          <p>the first 20 minutes are over-engineered. you don't sit alone. you don't open with "so what do you do."</p>
+        </div>
+      </div>
+      <div class="step-item reveal" style="--d:.15s">
+        <span class="step-num">STEP_04</span>
+        <div class="step-content">
+          <h4>something real usually happens.</h4>
+          <p>no business cards. no networking. just people who showed up for the same reason.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAST ORBITS ════════════════════════════════════════ -->
+<section class="mode2" style="border-top:2px solid rgba(123,47,255,.2)">
+  <div class="mode2-section">
+    <p class="reveal" style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,184,255,.3);margin-bottom:32px;">&gt; archive [ past_orbits ]</p>
+    <div class="grid-3">
+      <div class="past-card reveal">
+        <h3 style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:rgba(200,184,255,.5);text-transform:uppercase;margin-bottom:8px;text-decoration:line-through;">Game Night 01</h3>
+        <p style="font-family:var(--font-mono);font-size:11px;color:rgba(200,184,255,.3);">&gt; Date: Sep 01, 2026</p>
+        <p style="font-family:var(--font-mono);font-size:11px;color:rgba(200,184,255,.3);">&gt; fully filled</p>
+        <div class="hp-bar" style="margin-top:16px;opacity:.3">♥♥♥</div>
+      </div>
+      <div class="past-card reveal" style="--d:.1s">
+        <h3 style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:rgba(200,184,255,.5);text-transform:uppercase;margin-bottom:8px;text-decoration:line-through;">Park Meetup 01</h3>
+        <p style="font-family:var(--font-mono);font-size:11px;color:rgba(200,184,255,.3);">&gt; Date: Sep 20, 2026</p>
+        <p style="font-family:var(--font-mono);font-size:11px;color:rgba(200,184,255,.3);">&gt; nearly filled</p>
+        <div class="hp-bar" style="margin-top:16px;opacity:.3">♥♥♥</div>
+      </div>
+      <div class="past-card reveal" style="--d:.2s">
+        <h3 style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:rgba(200,184,255,.5);text-transform:uppercase;margin-bottom:8px;text-decoration:line-through;">Art Walk 01</h3>
+        <p style="font-family:var(--font-mono);font-size:11px;color:rgba(200,184,255,.3);">&gt; Date: Oct 01, 2026</p>
+        <p style="font-family:var(--font-mono);font-size:11px;color:rgba(200,184,255,.3);">&gt; fully filled</p>
+        <div class="hp-bar" style="margin-top:16px;opacity:.3">♥♥♥</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════ -->
+<section style="background:var(--pixel-violet);border-top:2px solid var(--pixel-violet);border-bottom:2px solid var(--pixel-violet);padding:64px 24px;text-align:center">
+  <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px">&gt; ready_to_enter_orbit?</p>
+  <h2 style="font-family:var(--font-head);font-weight:800;font-size:clamp(28px,7vw,60px);color:var(--white);line-height:1.05;margin-bottom:12px">pick a level.<br>show up.</h2>
+  <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:32px">form is short. one weird question. that's it.</p>
+  <a href="join.html" class="pixel-btn" style="background:var(--white);color:var(--pixel-violet);border-color:var(--white);font-size:13px;padding:14px 36px;display:inline-block">Join_Queue →</a>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer class="site-footer dark">
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="logo.png" alt="Social Orbit" class="footer-logo-img"></div>
+    <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,184,255,.3);">Lahore · 21 only · Touch Grass Together</p>
+    <div class="footer-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <p class="footer-copy">© 2026 Social Orbit</p>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

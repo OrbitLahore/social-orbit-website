@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Narrative | Social Orbit Lahore</title>
+  <meta name="description" content="Why Social Orbit exists. A small room in Lahore where interesting people meet other interesting people.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--cream); }
+
+    /* ── PAGE-SPECIFIC HERO ── */
+    .narr-hero {
+      background: var(--cream); border-bottom: var(--border);
+      padding: 110px 24px 80px; position: relative; overflow: hidden;
+    }
+    .narr-hero-inner { max-width: 900px; margin: 0 auto; }
+    .narr-hero-eyebrow {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--orbit-purple); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .narr-hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 2px; background: var(--orbit-purple);
+    }
+    .narr-hero h1 {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(44px, 11vw, 96px); line-height: 0.95;
+      letter-spacing: -2px; color: var(--ink); margin-bottom: 36px;
+    }
+    .narr-hero h1 em { color: var(--hot-pink); font-style: normal; }
+    .narr-hero-sub {
+      font-family: var(--font-body); font-size: clamp(17px, 2.5vw, 22px);
+      font-weight: 300; line-height: 1.6; color: rgba(26,26,26,.65);
+      max-width: 560px; border-left: 3px solid var(--hot-pink); padding-left: 20px;
+    }
+    /* watermark deco */
+    .narr-deco {
+      position: absolute; right: -40px; top: 20px;
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(120px, 25vw, 260px); line-height: 1;
+      color: rgba(91,63,212,.05); user-select: none; pointer-events: none;
+      letter-spacing: -4px;
+    }
+
+    /* ── FULL-BLEED STATEMENT ── */
+    .statement-block {
+      background: var(--ink); padding: 72px 24px;
+      border-top: var(--border); border-bottom: var(--border);
+    }
+    .statement-block-inner { max-width: 900px; margin: 0 auto; }
+    .statement-block p {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(26px, 5.5vw, 56px); line-height: 1.15;
+      color: var(--white); letter-spacing: -0.5px;
+    }
+    .statement-block p em { color: var(--hot-pink); font-style: normal; }
+    .statement-attr {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,.35); margin-top: 20px;
+    }
+
+    /* ── SECTION INTRO ── */
+    .narr-section { padding: 80px 24px; border-bottom: var(--border); }
+    @media (min-width: 768px) { .narr-section { padding: 96px 40px; } }
+    .narr-section-inner { max-width: 1100px; margin: 0 auto; }
+    .narr-label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--orbit-purple);
+      margin-bottom: 24px; display: block;
+    }
+
+    /* ── BIG STAT ── */
+    .big-stat-row {
+      display: flex; gap: 0; flex-wrap: wrap;
+      border: var(--border); margin-bottom: 48px;
+    }
+    .big-stat {
+      flex: 1 1 160px; padding: 32px 28px;
+      border-right: var(--border); text-align: center;
+    }
+    .big-stat:last-child { border-right: none; }
+    .big-stat-num {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(36px, 8vw, 72px); line-height: 1;
+      color: var(--orbit-purple); display: block;
+    }
+    .big-stat-lbl {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(26,26,26,.5); margin-top: 8px; display: block;
+    }
+
+    /* ── BODY TEXT COLUMN ── */
+    .body-col {
+      max-width: 640px;
+    }
+    .body-col p {
+      font-family: var(--font-body); font-size: clamp(15px, 2vw, 17px);
+      font-weight: 300; line-height: 1.75; color: rgba(26,26,26,.7);
+      margin-bottom: 20px;
+    }
+    .body-col p:last-child { margin-bottom: 0; }
+
+    /* ── PILL LIST ── */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .pill {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 8px 16px; border: var(--border);
+      color: var(--ink); background: var(--white);
+    }
+    .pill.accent { background: var(--orbit-purple); color: var(--white); border-color: var(--orbit-purple); }
+    .pill.hot { background: var(--hot-pink); color: var(--white); border-color: var(--hot-pink); }
+
+    /* ── IS / ISN'T SPLIT ── */
+    .split-row {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      border: var(--border); margin-top: 48px;
+    }
+    @media (min-width: 640px) { .split-row { grid-template-columns: 1fr 1fr; } }
+    .split-col { padding: 32px 28px; }
+    .split-col.dark { background: var(--ink); }
+    .split-col + .split-col { border-top: var(--border); }
+    @media (min-width: 640px) { .split-col + .split-col { border-top: none; border-left: var(--border); } }
+    .split-label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 20px; display: block;
+    }
+    .split-col.dark .split-label { color: var(--hot-pink); }
+    .split-col:first-child .split-label { color: var(--orbit-purple); }
+    .split-list { display: flex; flex-direction: column; gap: 12px; }
+    .split-list li {
+      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      line-height: 1.4; display: flex; align-items: baseline; gap: 10px;
+      color: rgba(26,26,26,.75);
+    }
+    .split-col.dark .split-list li { color: rgba(255,255,255,.6); text-decoration: line-through; }
+    .split-list li::before {
+      content: '→'; font-family: var(--font-mono); font-size: 11px;
+      color: var(--orbit-purple); flex-shrink: 0;
+    }
+    .split-col.dark .split-list li::before { content: '✕'; color: var(--hot-pink); }
+
+    /* ── PERSONA CARDS ── */
+    .persona-grid {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      border: var(--border); margin-top: 48px;
+    }
+    @media (min-width: 640px) { .persona-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .p-card {
+      padding: 36px 28px; border-bottom: var(--border);
+      position: relative; transition: background .2s;
+    }
+    .p-card:last-child { border-bottom: none; }
+    @media (min-width: 640px) {
+      .p-card { border-bottom: none; border-right: var(--border); }
+      .p-card:last-child { border-right: none; }
+    }
+    .p-card:hover { background: var(--white); }
+    .p-icon {
+      font-size: 40px; margin-bottom: 20px; display: block;
+      animation: float 4s ease-in-out infinite;
+    }
+    .p-card:nth-child(2) .p-icon { animation-delay: -1.3s; }
+    .p-card:nth-child(3) .p-icon { animation-delay: -2.6s; }
+    .p-tags { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+    .p-tag {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 8px;
+      border: 1px solid var(--orbit-purple); color: var(--orbit-purple);
+    }
+    .p-name {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(18px, 2.5vw, 22px); margin-bottom: 12px; color: var(--ink);
+    }
+    .p-body {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      line-height: 1.65; color: rgba(26,26,26,.65);
+    }
+    .p-card-num {
+      position: absolute; top: 20px; right: 24px;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+      color: rgba(26,26,26,.2);
+    }
+
+    /* ── CLOSING STATEMENT ── */
+    .thread-statement {
+      background: var(--white); border: var(--border);
+      padding: 40px 36px; margin-top: 40px;
+    }
+    .thread-statement p {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(22px, 4vw, 36px); line-height: 1.2;
+      color: var(--ink);
+    }
+    .thread-statement p em { color: var(--hot-pink); font-style: normal; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Social Orbit" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="narrative.html" class="active">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <a href="join.html" class="nav-cta">Enter Orbit →</a>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="narrative.html" class="active">Narrative</a>
+  <a href="events.html">Events</a>
+  <a href="join.html" class="cta">Join →</a>
+  <div class="mobile-foot">Lahore</div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="narr-hero">
+  <div class="narr-deco">SO</div>
+  <div class="narr-hero-inner">
+    <div class="narr-hero-eyebrow reveal">Social Orbit · Lahore</div>
+    <h1 class="reveal" style="--d:.05s">
+      Small<br>
+      <em>Room.</em><br>
+      Real Talk.
+    </h1>
+    <p class="narr-hero-sub reveal" style="--d:.12s">
+      a small room in lahore where interesting people meet other interesting people.<br><br>
+      that's it. that's the whole thing.
+    </p>
+  </div>
+</section>
+
+<!-- ══ FULL-BLEED STATEMENT: WHY ════════════════════════ -->
+<div class="statement-block reveal">
+  <div class="statement-block-inner">
+    <p>you already know good people exist.<br><em>the city just makes them hard to find.</em></p>
+    <div class="statement-attr">// 01 — why it works</div>
+  </div>
+</div>
+
+<!-- ══ WHY IT WORKS — BODY ══════════════════════════════ -->
+<section class="narr-section" style="background:var(--cream)">
+  <div class="narr-section-inner">
+    <span class="narr-label reveal">// the infrastructure problem</span>
+
+    <div class="grid-2" style="gap:56px;align-items:start">
+      <div class="body-col reveal" style="--d:.05s">
+        <p>lahore is full of people worth knowing. the creative who can hold a conversation for three hours. the person with a take on everything. the one who makes a room better just by being in it.</p>
+        <p>the problem isn't the people. it's the infrastructure. everything is either too big, too transactional, or too much of the same crowd you already know.</p>
+        <p>social orbit is a room designed to make that happen more often. small enough that everyone actually talks. structured enough that conversation doesn't stay surface level. different enough that you leave thinking about it.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <!-- Pull quote card -->
+        <div class="reveal" style="--d:.1s;border-left:4px solid var(--hot-pink);padding:28px 24px;background:var(--white)">
+          <p style="font-family:var(--font-head);font-weight:800;font-size:clamp(18px,3vw,26px);line-height:1.3;color:var(--ink);margin-bottom:0">
+            "you meet someone interesting and think —<br>
+            <span style="color:var(--hot-pink)">why haven't i been in a room with this person before?"</span>
+          </p>
+        </div>
+        <!-- Diagnostic pills -->
+        <div class="reveal" style="--d:.15s">
+          <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(26,26,26,.4);margin-bottom:12px">the actual problems →</p>
+          <div class="pill-group">
+            <span class="pill hot">too big</span>
+            <span class="pill hot">too transactional</span>
+            <span class="pill hot">same crowd</span>
+            <span class="pill hot">no real 3rd space</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FULL-BLEED STATEMENT: WHAT ════════════════════════ -->
+<div class="statement-block reveal" style="background:var(--orbit-purple);border-color:var(--orbit-purple)">
+  <div class="statement-block-inner">
+    <p style="color:var(--white)">a room that does<br><em>the hard part for you.</em></p>
+    <div class="statement-attr">// 02 — what we built</div>
+  </div>
+</div>
+
+<!-- ══ WHAT WE BUILT — BODY ══════════════════════════════ -->
+<section class="narr-section" style="background:var(--white)">
+  <div class="narr-section-inner">
+    <span class="narr-label reveal">// how the room works</span>
+
+    <div class="grid-2" style="gap:56px;align-items:start">
+      <div class="body-col reveal" style="--d:.05s">
+        <p>meeting people is easy. meeting people you actually want to see again is the hard part. most social setups leave that entirely to luck — awkward silences, phones out, everyone gravitating to who they already know.</p>
+        <p>we over-engineered the first 20 minutes. the room is alive when you arrive. there's already something happening. you get a job before your phone does. and the activity — different every time — is designed so that a real conversation becomes the path of least resistance.</p>
+        <p>no "what do you do" openers. no business cards. no one sitting alone. you don't have to try hard. the room does the work.</p>
+      </div>
+
+      <!-- IS / ISN'T split -->
+      <div class="reveal" style="--d:.1s">
+        <div class="split-row">
+          <div class="split-col">
+            <span class="split-label">what it is ✓</span>
+            <ul class="split-list">
+              <li>small on purpose</li>
+              <li>a different activity every time</li>
+              <li>status-neutral from the door</li>
+              <li>designed so you don't sit alone</li>
+              <li>slightly weird. always worth it.</li>
+            </ul>
+          </div>
+          <div class="split-col dark">
+            <span class="split-label">what it isn't ✕</span>
+            <ul class="split-list">
+              <li>networking event</li>
+              <li>therapy session</li>
+              <li>corporate initiative</li>
+              <li>party</li>
+              <li>powered by a bank</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FULL-BLEED STATEMENT: WHO ═════════════════════════ -->
+<div class="statement-block reveal">
+  <div class="statement-block-inner">
+    <p>people who want more interesting conversations<br><em>than they're currently having.</em></p>
+    <div class="statement-attr">// 03 — who shows up</div>
+  </div>
+</div>
+
+<!-- ══ WHO SHOWS UP — PERSONAS ══════════════════════════ -->
+<section class="narr-section" style="background:var(--cream);border-bottom:none">
+  <div class="narr-section-inner">
+    <span class="narr-label reveal">// the common thread isn't a mood. it's appetite.</span>
+
+    <div class="persona-grid reveal" style="--d:.05s">
+      <div class="p-card">
+        <span class="p-card-num">01</span>
+        <span class="p-icon">🎨</span>
+        <div class="p-tags">
+          <span class="p-tag">Creative</span>
+          <span class="p-tag">20–24</span>
+        </div>
+        <h3 class="p-name">the creative</h3>
+        <p class="p-body">wants conversations that go somewhere unexpected. the ones that start about one thing and end up somewhere completely different.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-card-num">02</span>
+        <span class="p-icon">💼</span>
+        <div class="p-tags">
+          <span class="p-tag">Professional</span>
+          <span class="p-tag">23–26</span>
+        </div>
+        <h3 class="p-name">the professional</h3>
+        <p class="p-body">good at meeting people in work contexts. genuinely curious about what happens when there's no work context to hide behind.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-card-num">03</span>
+        <span class="p-icon">📚</span>
+        <div class="p-tags">
+          <span class="p-tag">Student</span>
+          <span class="p-tag">20–22</span>
+        </div>
+        <h3 class="p-name">the student</h3>
+        <p class="p-body">ready for conversations outside the campus bubble. wants to meet people who aren't variations of the same three personality types.</p>
+      </div>
+    </div>
+
+    <div class="thread-statement reveal" style="--d:.1s">
+      <p>they want more from their social life than they're currently getting —<br>and they're willing to <em>walk into a room of strangers</em> to find it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════ -->
+<div class="cta-banner">
+  <p>lahore · small rooms · different every time</p>
+  <h2>walk in alone.<br>leave with people worth keeping.</h2>
+  <a href="join.html" class="btn-white">enter orbit →</a>
+</div>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="logo.png" alt="Social Orbit" class="footer-logo-img"></div>
+    <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(26,26,26,.5);">
+      Lahore · Touch Grass Together
+    </p>
+    <div class="footer-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <p class="footer-copy">© 2026 Social Orbit · form is short. orbits are rare.</p>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

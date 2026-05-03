@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Social Orbit | Lahore's Social Space</title>
+  <meta name="description" content="Social Orbit — One room. Nobody knows anybody. Something real usually happens. Lahore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Landing page extras */
+    body { background: var(--cream); }
+    .hero-section {
+      background: var(--cream);
+      border-bottom: var(--border);
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 80px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+    }
+    @media (min-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+    }
+    .hero-deco-tl { position: absolute; top: 24px; left: 24px; font-size: 32px; color: var(--orbit-purple); user-select:none; }
+    .hero-deco-br { position: absolute; bottom: 40px; right: 24px; font-size: 32px; color: var(--hot-pink); user-select:none; }
+    .hero-note {
+      border: var(--border); background: var(--white); padding: 16px 20px;
+      transform: rotate(1deg); display: inline-block;
+      font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.5;
+      max-width: 360px;
+    }
+    .hero-image-box {
+      border: 2px dashed rgba(26,26,26,.3); background: var(--white);
+      min-height: 420px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+      padding: 56px 40px; transform: rotate(-4deg);
+      box-shadow: 8px 10px 0px rgba(26,26,26,.12);
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(26,26,26,.4); text-align: center; position: relative;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .hero-image-box:hover {
+      transform: rotate(-2deg) scale(1.02);
+      box-shadow: 12px 16px 0px rgba(26,26,26,.15);
+    }
+    .redacted-icon {
+      width: 72px; height: 72px; opacity: .25;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='1.2'%3E%3Crect x='3' y='3' width='18' height='18' rx='1'/%3E%3Cline x1='3' y1='3' x2='21' y2='21'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-size: contain;
+    }
+    .redacted-label {
+      font-family: var(--font-mono); font-size: 14px; letter-spacing: 4px;
+      color: rgba(26,26,26,.55); text-transform: uppercase;
+    }
+    .redacted-sub {
+      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      font-style: italic; color: var(--hot-pink); letter-spacing: 0;
+      text-transform: none; line-height: 1.6; max-width: 260px;
+    }
+    .redacted-badge {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2.5px;
+      text-transform: uppercase; border: 1px solid rgba(26,26,26,.35);
+      padding: 7px 18px; color: rgba(26,26,26,.55); margin-top: 6px;
+    }
+
+    /* Marquee ticker */
+    .ticker-row {
+      background: var(--ink); border-bottom: var(--border);
+      overflow: hidden; padding: 0; user-select: none;
+    }
+    .ticker-track {
+      display: flex; white-space: nowrap;
+      animation: ticker-scroll 18s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 0;
+      padding: 20px 0;
+      font-family: var(--font-mono); font-size: clamp(13px,2vw,16px);
+      letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+    }
+    .ticker-dot {
+      display: inline-block; margin: 0 24px;
+      color: var(--hot-pink); font-size: 18px; line-height: 1;
+    }
+    .stat-num {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(32px,7vw,60px); color: var(--hot-pink); display: block; line-height: 1;
+    }
+    .stat-lbl {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,.4); margin-top: 4px; display: block;
+    }
+
+    /* IS / ISNOT */
+    .isnot-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border: var(--border);
+    }
+    .isnot-col { padding: 24px; }
+    .isnot-col + .isnot-col { border-left: var(--border); }
+    .isnot-col ul li {
+      font-family: var(--font-mono); font-size: 12px; padding: 8px 0;
+      border-bottom: 1px solid rgba(26,26,26,.1); color: rgba(26,26,26,.7);
+    }
+    .isnot-col ul li:last-child { border-bottom: none; }
+    .isnot-col.is ul li { color: var(--orbit-purple); }
+    .isnot-col.isnot ul li { color: var(--hot-pink); text-decoration: line-through; }
+
+    /* events teaser */
+    .events-teaser { background: var(--pixel-night); border-top: var(--border); border-bottom: var(--border); }
+    .events-teaser-inner { max-width: 1200px; margin: 0 auto; padding: 72px 24px; }
+    @media (min-width: 768px) { .events-teaser-inner { padding: 96px 40px; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Social Orbit" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <a href="join.html" class="nav-cta">Enter Orbit →</a>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="narrative.html">Narrative</a>
+  <a href="events.html">Events</a>
+  <a href="join.html" class="cta">Join →</a>
+  <div class="mobile-foot">Lahore</div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero-section mode1">
+  <span class="hero-deco-tl">✦</span>
+  <span class="hero-deco-br">✦</span>
+  <div class="hero-inner">
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div class="section-label reveal">// Social Orbit · Lahore</div>
+      <h1 class="zine-h1 reveal" style="--d:.05s; font-size:clamp(24px,5.5vw,52px);">
+        Scrolled for hours.<br>
+        <span style="color:var(--hot-pink)">still bored?</span><br>
+        there’s a fix.
+      </h1>
+      <div class="hero-note reveal" style="--d:.1s">
+        400 followers. nobody to call.
+      </div>
+      <div class="flex-row reveal" style="--d:.15s">
+        <a href="join.html" class="btn-primary" style="font-size:15px;padding:16px 36px;">Enter Orbit →</a>
+        <a href="narrative.html" class="btn-secondary" style="font-size:13px;padding:14px 24px;">what is this?</a>
+      </div>
+      <div class="reveal" style="--d:.2s;display:flex;gap:12px;flex-wrap:wrap;">
+        <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:var(--border);padding:6px 14px;">🎫 Rs. 1500</span>
+        <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:var(--border);padding:6px 14px;">🔒 small room</span>
+        <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:var(--border);padding:6px 14px;">📍 Lahore</span>
+      </div>
+    </div>
+    <div>
+      <div class="hero-image-box reveal" style="--d:.1s">
+        <div class="redacted-icon"></div>
+        <span class="redacted-label">[ &nbsp;Image Redacted&nbsp; ]</span>
+        <p class="redacted-sub">Too much screen time. Go outside and see it for yourself.</p>
+        <span class="redacted-badge">Real Vibes Only</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══════════════════════════════════════════════ -->
+<div class="ticker-row">
+  <div class="ticker-track">
+    <!-- set repeated twice for seamless loop -->
+    <span class="ticker-item">MESSY</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">WARM</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">YOURS</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">REAL</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">OFFLINE</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">LOUD</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">MESSY</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">WARM</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">YOURS</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">REAL</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">OFFLINE</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">LOUD</span><span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<!-- ══ EVENTS TEASER ══════════════════════════════════════ -->
+<section class="events-teaser">
+  <div class="events-teaser-inner">
+    <p class="reveal" style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--pixel-mist);opacity:.6;margin-bottom:16px;">> side_quest unlocked</p>
+    <h2 class="pixel-h1 reveal" style="--d:.05s;margin-bottom:48px;">> Pick_Your_Orbit</h2>
+    <div class="grid-3">
+      <div class="pixel-card reveal" style="--d:.0s">
+        <div class="pixel-corner-tr"></div><div class="pixel-corner-bl"></div>
+        <div style="border-bottom:2px solid var(--pixel-violet);padding-bottom:10px;margin-bottom:14px;display:flex;justify-content:space-between">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);">Lvl: 01</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);">HP: Full</span>
+        </div>
+        <h3 class="pixel-h2" style="margin-bottom:10px;font-size:18px;">Arcade Night</h3>
+        <p class="pixel-body" style="margin-bottom:16px;min-height:60px;">Button mashing, neon lights, zero networking pressure. High scores only.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--hot-pink);margin-bottom:16px;">
+          <div>&gt; Date: Oct 15</div>
+          <div>&gt; Loc: TBA</div>
+        </div>
+        <div style="border-top:2px solid var(--pixel-violet);padding-top:14px;display:flex;justify-content:space-between;align-items:center;">
+          <span class="hp-bar">♥♥♥</span>
+          <a href="join.html" class="pixel-btn">Join_Q</a>
+        </div>
+      </div>
+      <div class="pixel-card reveal" style="--d:.1s">
+        <div class="pixel-corner-tr"></div><div class="pixel-corner-bl"></div>
+        <div style="border-bottom:2px solid var(--pixel-violet);padding-bottom:10px;margin-bottom:14px;display:flex;justify-content:space-between">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);">Lvl: 02</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);">HP: Mid</span>
+        </div>
+        <h3 class="pixel-h2" style="margin-bottom:10px;font-size:18px;">Rooftop Chai</h3>
+        <p class="pixel-body" style="margin-bottom:16px;min-height:60px;">Lowkey conversations under the smoggy Lahore skyline. Blankets provided.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--hot-pink);margin-bottom:16px;">
+          <div>&gt; Date: Oct 22</div>
+          <div>&gt; Loc: Model Town</div>
+        </div>
+        <div style="border-top:2px solid var(--pixel-violet);padding-top:14px;display:flex;justify-content:space-between;align-items:center;">
+          <span class="hp-bar">♥♥_</span>
+          <a href="join.html" class="pixel-btn">Join_Q</a>
+        </div>
+      </div>
+      <div class="pixel-card reveal" style="--d:.2s">
+        <div class="pixel-corner-tr"></div><div class="pixel-corner-bl"></div>
+        <div style="border-bottom:2px solid var(--pixel-violet);padding-bottom:10px;margin-bottom:14px;display:flex;justify-content:space-between">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);">Lvl: 03</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--pixel-mist);">HP: Low</span>
+        </div>
+        <h3 class="pixel-h2" style="margin-bottom:10px;font-size:18px;">Zine Workshop</h3>
+        <p class="pixel-body" style="margin-bottom:16px;min-height:60px;">Cut, paste, complain. Making physical media about digital fatigue.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--hot-pink);margin-bottom:16px;">
+          <div>&gt; Date: Nov 05</div>
+          <div>&gt; Loc: Gulberg</div>
+        </div>
+        <div style="border-top:2px solid var(--pixel-violet);padding-top:14px;display:flex;justify-content:space-between;align-items:center;">
+          <span class="hp-bar">♥__</span>
+          <a href="join.html" class="pixel-btn">Join_Q</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="events.html" class="pixel-btn-outline">view all events →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT IT IS ═════════════════════════════════════════ -->
+<section class="mode1" style="border-bottom:var(--border)">
+  <div class="mode1-section">
+    <div class="section-label reveal">// what it is</div>
+    <div style="display:grid;grid-template-columns:1fr;gap:32px;align-items:center;">
+
+      <!-- Headline row -->
+      <h2 class="zine-h2 reveal" style="margin:0;">
+        not a networking event.<br>
+        not a therapy session.<br>
+        <span style="color:var(--hot-pink)">not a party.</span>
+      </h2>
+
+      <!-- Divider -->
+      <hr style="border:none;border-top:var(--border);margin:0;">
+
+      <!-- Body + CTA row -->
+      <div style="display:grid;grid-template-columns:1fr;gap:24px;">
+        <p class="zine-body reveal" style="--d:.1s;margin:0;">
+          A room where things actually happen. You leave with stories, energy — and at least one name you'll actually text.
+        </p>
+        <div class="reveal" style="--d:.15s">
+          <a href="narrative.html" class="btn-secondary">read the full story →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══ CTA BANNER ════════════════════════════════════════ -->
+<div class="cta-banner reveal">
+  <h2>one room.<br>something real.</h2>
+  <p>nobody knows anybody. that's the whole point.</p>
+  <a href="join.html" class="btn-white">grab a spot →</a>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="Social Orbit" class="footer-logo-img">
+    </div>
+    <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(26,26,26,.5);">
+      Lahore · Touch Grass Together
+    </p>
+    <div class="footer-links">
+      <a href="narrative.html">Narrative</a>
+      <a href="events.html">Events</a>
+      <a href="join.html">Join</a>
+    </div>
+    <p class="footer-copy">© 2026 Social Orbit · form is short. orbits are rare.</p>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
